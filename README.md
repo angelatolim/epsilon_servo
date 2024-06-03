@@ -1,4 +1,9 @@
-Georgia 
+# EPSILON SERVO
+### Team name
+Epsilon V
+### Team members
+Georgia Scott
 Bernadine Dao
-# Name: Mark Adrian Dolaoco Velasquez
-## Github: CodePnut
+Mark Adrian Dolaoco Velasquez
+Eric Stuart-Jones
+Angela Liu
