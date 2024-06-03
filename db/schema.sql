@@ -2,7 +2,7 @@ CREATE DATABASE servo;
 
 CREATE TABLE stations
 (
-    id SERIAL PRIMARY KEY integer,
+    id SERIAL PRIMARY KEY,
     FEATURETYPE text,
     DESCRIPTION text,
     CLASS text,
