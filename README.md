@@ -1,3 +1,2 @@
 Georgia 
-
--- readme test 
+Bernadine Dao
