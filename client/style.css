@@ -1,0 +1,23 @@
+* {
+    border: 1px red solid;
+}
+
+.about, .nearest {
+    height: 100%;
+}
+
+.map {
+    background-color: grey;
+    height: 100%;
+}
+
+.page-wrapper {
+    display: grid;
+    grid-template-columns: 2fr 5fr 2fr;
+    height: 100vh;
+}
+
+.section-left, .section-right {
+    display: flex;
+    flex-direction: column;
+}
