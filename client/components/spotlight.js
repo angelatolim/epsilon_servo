@@ -1,27 +1,30 @@
-import * as MapApi from '../map_api.js'
+import * as MapApi from "../map_api.js";
 
-const spotlightDiv = document.querySelector('.spotlight')
+const spotlightDiv = document.querySelector(".spotlight-content");
+const refreshBtn = document.querySelector(".refresh-btn");
 
-MapApi.fetchRandomOwner()
-    .then(randomOwner => {
-        console.log(randomOwner)
-        const name = randomOwner.name
-        const address = randomOwner.address
+renderSpotlight();
 
-        const nameDiv = document.createElement('div')
-        nameDiv.innerHTML = name 
-        nameDiv.classname = 'name-div'
-        
-        const addressDiv = document.createElement('div')
-        addressDiv.innerHTML = address
-        addressDiv.className = 'address-div'
-        
-        spotlightDiv.appendChild(nameDiv)
-        spotlightDiv.appendChild(addressDiv)
+refreshBtn.addEventListener("click", renderSpotlight);
 
-    }
-    )
+async function getRandom() {
+  const randomOwner = await MapApi.fetchRandomOwner();
+  return randomOwner;
+}
 
-// function renderSpotlight() {
+async function renderSpotlight() {
+  spotlightDiv.innerHTML = "";
 
-// }    
+  let data = await getRandom();
+
+  const nameDiv = document.createElement("div");
+  nameDiv.innerHTML = data.name;
+  nameDiv.classname = "name-div";
+
+  const addressDiv = document.createElement("div");
+  addressDiv.innerHTML = data.address;
+  addressDiv.className = "address-div";
+
+  spotlightDiv.appendChild(nameDiv);
+  spotlightDiv.appendChild(addressDiv);
+}
