@@ -7,4 +7,8 @@ router.get("/api/stations/all", (req, res) => {
   Station.findMany().then((data) => res.status(200).json(data));
 });
 
+router.get("/api/stations", (req, res) => {
+  Station.findTen().then((data) => res.status(200).json(data));
+});
+
 module.exports = router;
