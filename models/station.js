@@ -12,8 +12,21 @@ function findMany() {
   return db.query(sql).then((result) => result.rows);
 }
 
+function findTen() {
+  let sql = `
+        SELECT *
+        FROM stations
+        ORDER BY id
+        LIMIT 10
+        ;
+    `;
+
+  return db.query(sql).then((result) => result.rows);
+}
+
 const Station = {
   findMany,
+  findTen
 };
 
 module.exports = Station;

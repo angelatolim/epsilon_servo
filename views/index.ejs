@@ -76,10 +76,9 @@
         </div>
         <div class="nearest">
           <div class="nearest-header"><h1>Nearest</h1></div>
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Expedita,
-          doloribus labore et sapiente quasi quaerat assumenda ut aliquam,
-          officiis possimus voluptates, in aspernatur alias explicabo culpa
-          pariatur praesentium facere harum?
+            <div class="station-list">
+
+            </div>
         </div>
       </section>
     </div>
@@ -120,6 +119,6 @@
           : (d[l] = (f, ...n) => r.add(f) && u().then(() => d[l](f, ...n)));
       })({ key: "<%=process.env.GOOGLE_API_KEY%>", v: "weekly" });
     </script>
-    <script src="/client.js"></script>
+    <script src="/client.js" type="module"></script>
   </body>
 </html>

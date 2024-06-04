@@ -4,6 +4,8 @@ export async function fetchStations() {
     return stations
 }
 
-const MapApi = {
-    fetchStations
+export async function fetchTen() {
+  let res = await fetch('/api/stations')
+  let stations = await res.json()
+  return stations
 }
