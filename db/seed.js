@@ -1,20 +1,20 @@
-const fs = require('fs');
-const db = require('./index.js');
+const fs = require("fs");
+const db = require("./index.js");
 
 function readFile(filePath) {
-    try {
-      const data = fs.readFileSync(filePath);
-      return data.toString();
-    } catch (error) {
-      console.error(`Got an error trying to read the file: ${error.message}`);
-    }
+  try {
+    const data = fs.readFileSync(filePath);
+    return data.toString();
+  } catch (error) {
+    console.error(`Got an error trying to read the file: ${error.message}`);
+  }
 }
 
-const stations = readFile('./db/stations.txt');
-const stationsArray = stations.split('\n').slice(1);
-const stationsArrayMapped = stationsArray.map(station => {
-    return station.split(',').slice(1);
-})
+const stations = readFile("./db/stations.txt");
+const stationsArray = stations.split("\n").slice(1);
+const stationsArrayMapped = stationsArray.map((station) => {
+  return station.split(",").slice(1);
+});
 
 const sql = `INSERT INTO stations 
     (FEATURETYPE, 
@@ -38,9 +38,26 @@ const sql = `INSERT INTO stations
      RETURNING *;`;
 
 for (let station of stationsArrayMapped) {
-    seedDatabase(station);
+  seedDatabase(station);
 }
 
-async function seedDatabase (station) {
-    return await db.query(sql, [station[0], station[1], station[2], station[3], station[4], station[5], station[6], station[7], station[8], station[9], station[10], station[11], station[12], station[13], station[14], station[15]]);
+async function seedDatabase(station) {
+  return await db.query(sql, [
+    station[0],
+    station[1],
+    station[2],
+    station[3],
+    station[4],
+    station[5],
+    station[6],
+    station[7],
+    station[8],
+    station[9],
+    station[10],
+    station[11],
+    station[12],
+    station[13],
+    station[14],
+    station[15],
+  ]);
 }
