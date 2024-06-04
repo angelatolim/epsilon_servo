@@ -22,3 +22,5 @@ CREATE TABLE stations
 );
 
 -- drop FID and industry ID
+
+select owner, count(id) from stations group by owner having count(id) > 1 order by count desc;
