@@ -16,9 +16,8 @@ async function initMap() {
 
   MapApi.fetchStations().then((stations) => {
     stations.forEach((station) => {
-
-      const lat = Number(station.latitude)
-      const lng = Number(station.longitude)
+      const lat = Number(station.latitude);
+      const lng = Number(station.longitude);
 
       const position = {
         lat: lat,
@@ -27,12 +26,12 @@ async function initMap() {
       const marker = new AdvancedMarkerElement({
         map: map,
         position: position,
-        title: station.name
+        title: station.name,
       });
 
-      const name = station.name
-      const address = station.address
-      const owner = station.owner
+      const name = station.name;
+      const address = station.address;
+      const owner = station.owner;
 
       const contentString = `<div id="content">
         <h1>${name}</h1>
@@ -42,20 +41,33 @@ async function initMap() {
         <p>${lng.toFixed(6)}</p>
         <button>Save</button>
       </div>
-      `
+      `;
       const infowindow = new google.maps.InfoWindow({
         content: contentString,
         // ariaLabel: "NAME"
-        
-    });
-      marker.addListener('click', () => {
+      });
+      marker.addListener("click", () => {
         infowindow.open({
           anchor: marker,
           map,
-        })
-      })
-  });
-})}
+        });
+      });
+    });
+    const currentCenter = map.getCenter();
+    const mapCenter = document.querySelector(".map-centre");
 
+    let lat = document.createElement("p");
+    let lng = document.createElement("p");
+
+    lat.textContent = `lat: ${currentCenter.lat()}`;
+    lng.textContent = `lng: ${currentCenter.lng()}`;
+
+    mapCenter.appendChild(lat);
+    mapCenter.appendChild(lng);
+
+    console.log(currentCenter);
+    console.log(currentCenter);
+  });
+}
 
 initMap();
