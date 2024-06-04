@@ -24,9 +24,22 @@ function findTen() {
   return db.query(sql).then((result) => result.rows);
 }
 
+function findRandom() {
+  let sql = `
+        SELECT * 
+        FROM stations 
+        ORDER BY RANDOM()
+        LIMIT 1
+        ;
+  `;
+
+  return db.query(sql).then((result) => result.rows[0]);
+}
+
 const Station = {
   findMany,
-  findTen
+  findTen,
+  findRandom,
 };
 
 module.exports = Station;
