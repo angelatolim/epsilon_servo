@@ -27,6 +27,26 @@ async function initMap() {
       });
     });
   });
+  const currentCenter = map.getCenter()
+  const mapCenter = document.querySelector('.map-centre')
+
+  let lat = document.createElement('p')
+  let lng = document.createElement('p')
+
+
+  lat.textContent = `lat: ${currentCenter.lat()}`
+  lng.textContent = `lng: ${currentCenter.lng()}`
+
+
+  mapCenter.appendChild(lat)
+  mapCenter.appendChild(lng)
+  
+  console.log(currentCenter)
+  console.log(currentCenter)
 }
+
+
+
+
 
 initMap();
