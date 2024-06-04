@@ -64,9 +64,6 @@ async function initMap() {
 
     mapCenter.appendChild(lat);
     mapCenter.appendChild(lng);
-
-    console.log(currentCenter);
-    console.log(currentCenter);
   });
   const currentCenter = map.getCenter()
   const mapCenter = document.querySelector('.map-centre')

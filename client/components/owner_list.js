@@ -14,9 +14,6 @@ mapApi.fetchOwnerStats()
       nameDiv.textContent = ownerName
       countDiv.textContent = ownerCount
       ownerDiv.className = 'owner-div'
-
-      console.log(ownerCount);
-
       ownerDiv.appendChild(nameDiv)
       ownerDiv.appendChild(countDiv)
       ownerDiv.style.display = 'flex'
@@ -27,14 +24,3 @@ mapApi.fetchOwnerStats()
 
     })
   })
-
-mapApi.fetchTen()
-  .then(stations => {
-    stations.forEach( station => {
-      let stationElem = createStationElem(station)
-      ownerList.appendChild(stationElem)
-    })
-})
-
-
-// functions
