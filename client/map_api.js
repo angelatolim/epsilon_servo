@@ -15,3 +15,9 @@ export async function fetchOwnerStats() {
   let ownerStats = await res.json()
   return ownerStats
 }
+
+export async function fetchRandomOwner() {
+  let res = await fetch('/api/stations/random')
+  let randomOwner = await res.json()
+  return randomOwner
+}
