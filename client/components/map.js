@@ -16,16 +16,57 @@ async function initMap() {
 
   MapApi.fetchStations().then((stations) => {
     stations.forEach((station) => {
+      const lat = Number(station.latitude);
+      const lng = Number(station.longitude);
+
       const position = {
-        lat: Number(station.latitude),
-        lng: Number(station.longitude),
+        lat: lat,
+        lng: lng,
       };
       const marker = new AdvancedMarkerElement({
         map: map,
         position: position,
-        title: station.name
+        title: station.name,
+      });
+
+      const name = station.name;
+      const address = station.address;
+      const owner = station.owner;
+
+      const contentString = `<div id="content">
+        <h1>${name}</h1>
+        <p>${address}</p>
+        <p>${owner}</p>
+        <p>${lat.toFixed(6)}</p>
+        <p>${lng.toFixed(6)}</p>
+        <button>Save</button>
+      </div>
+      `;
+      const infowindow = new google.maps.InfoWindow({
+        content: contentString,
+        // ariaLabel: "NAME"
+      });
+      marker.addListener("click", () => {
+        infowindow.open({
+          anchor: marker,
+          map,
+        });
       });
     });
+    const currentCenter = map.getCenter();
+    const mapCenter = document.querySelector(".map-centre");
+
+    let lat = document.createElement("p");
+    let lng = document.createElement("p");
+
+    lat.textContent = `lat: ${currentCenter.lat()}`;
+    lng.textContent = `lng: ${currentCenter.lng()}`;
+
+    mapCenter.appendChild(lat);
+    mapCenter.appendChild(lng);
+
+    console.log(currentCenter);
+    console.log(currentCenter);
   });
   const currentCenter = map.getCenter()
   const mapCenter = document.querySelector('.map-centre')
