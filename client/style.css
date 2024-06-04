@@ -1,5 +1,5 @@
 * {
-  border: 1px red solid;
+  border: red solid 1px;
 }
 
 .about,
@@ -9,6 +9,7 @@
 
 .map {
   height: 100%;
+  width: 100%;
 }
 
 .page-wrapper {
