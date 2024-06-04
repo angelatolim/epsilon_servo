@@ -1,7 +1,9 @@
+import * as MapApi from "../map_api.js";
+
 let map;
 
 async function initMap() {
-  const position = { lat: -25.344, lng: 131.031 };
+  const position = { lat: -33.868, lng: 151.209 };
   const { Map } = await google.maps.importLibrary("maps");
   const { AdvancedMarkerElement } = await google.maps.importLibrary("marker");
 
@@ -12,10 +14,17 @@ async function initMap() {
     mapId: "DEMO_MAP_ID",
   });
 
-  const marker = new AdvancedMarkerElement({
-    map: map,
-    position: position,
-    title: "Marker",
+  MapApi.fetchStations().then((stations) => {
+    stations.forEach((station) => {
+      const position = {
+        lat: Number(station.latitude),
+        lng: Number(station.longitude),
+      };
+      const marker = new AdvancedMarkerElement({
+        map: map,
+        position: position,
+      });
+    });
   });
 }
 
