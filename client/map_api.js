@@ -9,3 +9,9 @@ export async function fetchTen() {
   let stations = await res.json()
   return stations
 }
+
+export async function fetchOwnerStats() {
+  let res = await fetch('/api/stats')
+  let ownerStats = await res.json()
+  return ownerStats
+}
