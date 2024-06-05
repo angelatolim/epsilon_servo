@@ -3,7 +3,34 @@ import * as MapApi from "../map_api.js";
 let map;
 
 async function initMap() {
+<<<<<<< Updated upstream
   const position = { lat: -36.118379, lng: 146.872897 };
+=======
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(handleSuccess, handleError)
+  } else {
+    console.log(`geolocation not found`);
+    const defaultPosition = { lat: -33.868, lng: 151.209 };
+    loadMap(defaultPosition)
+  }
+}
+
+function handleSuccess(position) {
+  const userLocation = {
+    lat: position.coords.latitude,
+    lng: position.coords.longitude
+  }
+  loadMap(userLocation)
+}
+
+function handleError(err) {
+  console.log();
+  const defaultPosition = { lat: -33.868, lng: 151.209 };
+  loadMap(defaultPosition)
+}
+
+async function loadMap(position) {
+>>>>>>> Stashed changes
   const { Map } = await google.maps.importLibrary("maps");
   const { AdvancedMarkerElement } = await google.maps.importLibrary("marker");
 
@@ -15,13 +42,16 @@ async function initMap() {
     center: position,
     mapId: "DEMO_MAP_ID",
   });
+<<<<<<< Updated upstream
 
 
+=======
+>>>>>>> Stashed changes
   MapApi.fetchStations().then((stations) => {
     stations.forEach((station) => {
       const lat = Number(station.latitude);
       const lng = Number(station.longitude);
-
+  
       const position = {
         lat: lat,
         lng: lng,
@@ -61,13 +91,17 @@ async function initMap() {
         title: station.name,
         content: markerImg
       });
+<<<<<<< Updated upstream
 
 
 
+=======
+  
+>>>>>>> Stashed changes
       const name = station.name;
       const address = station.address;
       const owner = station.owner;
-
+  
       const contentString = `<div id="content">
         <h1>${name}</h1>
         <p>${address}</p>
@@ -89,6 +123,7 @@ async function initMap() {
       });
     });
   });
+
   const currentCenter = map.getCenter();
   const mapCenter = document.querySelector(".map-centre");
 
