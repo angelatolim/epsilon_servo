@@ -33,8 +33,8 @@
 
 .section-left,
 .section-right {
-  background-color: black;
-  padding: 4px;
+  background-color: #262626;
+  padding: 10px;
   color: white;
   display: flex;
   flex-direction: column;
@@ -49,12 +49,63 @@
 }
 
 .nearest-icon {
-  margin: 0 auto;
-  width: 100%;
-  height: 100%
+  height: 50%;
+  width: 50%;
+  object-fit: contain;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
 }
 
 .station {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 3fr;
 }
+
+.nearest-icon-div,
+.nearest-text-div {
+  height: 100px;
+  
+}
+
+.section-left > div {
+  border-bottom: 2px solid #363636;
+  margin-bottom: 20px;
+  padding-bottom: 20px
+}
+
+.name-link {
+  color: #B07FF5
+}
+
+button {
+  color: white;
+  background-color: #4D00BC;
+  border: 2px solid #6715DD;
+  padding: 10px;
+  border-radius: 10px;
+  font-family: Roboto Mono;
+  height: 3rem;
+  display: inline-block;
+}
+
+.search-icon {
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
+}
+
+.postcode-search-input {
+  color: white;
+  background-color: #424242;
+  border: 2px solid #646464;
+  border-radius: 10px;
+  font-family: Roboto Mono;
+  height: 3rem;
+  display: inline-block;
+}
+
+/* .postcode-search-form {
+  align-items: center;
+} */

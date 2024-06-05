@@ -15,7 +15,7 @@ function findMany() {
 
 function totalStationsByOwner() {
   const sql = `
-  SELECT owner, count(id) FROM stations GROUP BY owner HAVING count(id) > 1 ORDER BY count desc;`
+  SELECT owner, count(id) FROM stations GROUP BY owner HAVING count(id) > 1 ORDER BY count desc limit 7;`
 
   return db.query(sql).then((result) => result.rows);
 }
