@@ -4,17 +4,43 @@ export function createStationElem(station) {
   let elem = document.createElement("div");
   elem.className = "station";
 
+  let textDiv = document.createElement("div")
   let name = document.createElement("p");
   let address = document.createElement("p");
-  let owner = document.createElement("p");
+  let owner = document.createElement("img");
 
   name.textContent = station.name;
   address.textContent = station.address;
-  owner.textContent = station.owner;
+
+  owner.className = "nearest-icon";
+
+  switch (station.owner) {
+    case "Caltex":
+      owner.src = "../images/caltex.png";
+      break;
+    case "Shell":
+      owner.src = "../images/shell.png";
+      break;
+    case "7-Eleven Pty Ltd":
+      owner.src = "../images/7-eleven.png";
+      break;
+    case "Ampol":
+      owner.src = "../images/ampol.png";
+      break;
+    case "BP":
+      owner.src = "../images/bp.png";
+      break;
+    case "United":
+      owner.src = "../images/united.png";
+      break;
+    default:
+      owner.src = "../images/fuel.png";
+  }
 
   elem.appendChild(owner);
-  elem.appendChild(name);
-  elem.appendChild(address);
+  textDiv.appendChild(name);
+  textDiv.appendChild(address);
+  elem.appendChild(textDiv)
   return elem;
 }
 
