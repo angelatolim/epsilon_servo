@@ -24,6 +24,37 @@ async function renderSpotlight() {
   nameLink.className = "name-link";
   nameLink.addEventListener("click", handleLink);
 
+  let iconDiv = document.createElement("div")
+  iconDiv.className = "spotlight-icon-div"
+  let owner = document.createElement("img");
+
+  owner.className = "spotlight-icon";
+
+  switch (data.owner) {
+    case "Caltex":
+      owner.src = "../images/caltex-icon.png";
+      break;
+    case "Shell":
+      owner.src = "../images/shell-icon.png";
+      break;
+    case "7-Eleven Pty Ltd":
+      owner.src = "../images/7-eleven-icon.png";
+      break;
+    case "Ampol":
+      owner.src = "../images/ampol-icon.png";
+      break;
+    case "BP":
+      owner.src = "../images/bp-icon.png";
+      break;
+    case "United":
+      owner.src = "../images/united-icon.png";
+      break;
+    default:
+      owner.src = "../images/fuel-icon.png";
+  }
+
+  iconDiv.appendChild(owner)
+
   async function handleLink(event) {
     const latLng = {
       lat: data.latitude,
@@ -94,8 +125,13 @@ async function renderSpotlight() {
 
   const addressDiv = document.createElement("div");
   addressDiv.innerHTML = data.address;
-  addressDiv.className = "address-div";
 
-  spotlightDiv.appendChild(nameLink);
-  spotlightDiv.appendChild(addressDiv);
+  addressDiv.className = "address-div";
+  const spotlightText = document.createElement('div')
+  spotlightText.className = 'spotlight-text-div'
+
+  spotlightText.appendChild(nameLink);
+  spotlightText.appendChild(addressDiv);
+  spotlightDiv.appendChild(iconDiv)
+  spotlightDiv.appendChild(spotlightText)
 }

@@ -1,23 +1,52 @@
 /* * {
   border: red solid 1px;
 } */
+
 @import url(https://fonts.googleapis.com/css?family=Roboto+Mono:100,200,300,regular,500,600,700,100italic,200italic,300italic,italic,500italic,600italic,700italic);
 
-.about,
-.nearest {
-  height: 100%;
+:root {
+  --font-family: Roboto Mono;
+  --colour--white: #ffffff;
+  --colour--dark: #262626;
+  --colour--divider: #363636;
+  --colour--input: #424242;
+  --colour--input--border: #646464;
+  --colour--primary: #4D00BC;
+  --colour--primary--border: #6715DD;
+  --colour--primary--hover: #280062;
+  --colour--primary--hover--border: #400A8D;
+  --colour--link: #B07FF5;
 }
 
-.map {
-  height: 100%;
-  width: 100%;
+h1 {
+  font-size: 1.8rem;
+}
+
+button {
+  color: var(--colour--white);
+  background-color: var(--colour--primary);
+  border: 2px solid var(--colour--primary--border);
+  padding: 5px;
+  border-radius: 10px;
+  font-family: var(--font-family);
+  height: 3rem;
+  display: inline-block;
+}
+
+button:hover {
+  background-color: var(--colour--primary--hover);
+  border: 2px solid var(--colour--primary--hover--border);
+}
+
+button, button:hover {
+  transition: background-color 0.2s, border 0.2s;
 }
 
 .page-wrapper {
   display: grid;
   grid-template-columns: 2fr 5fr 2fr;
   height: 100vh;
-  font-family: Roboto Mono;
+  font-family: var(--font-family);
   text-transform: uppercase;
 }
 
@@ -33,9 +62,9 @@
 
 .section-left,
 .section-right {
-  background-color: #262626;
+  background-color: var(--colour--dark);
   padding: 10px;
-  color: white;
+  color: var(--colour--white);
   display: flex;
   flex-direction: column;
 }
@@ -44,8 +73,105 @@
   display: none;
 }
 
+.section-left > div {
+  border-bottom: 2px solid var(--colour--divider);
+  margin-bottom: 20px;
+  padding-bottom: 20px
+}
+
+.star {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.star img {
+  height: 24px;
+}
+
+.spotlight-header {
+  display: flex;
+  align-items: center;
+  padding-bottom: 8px;
+}
+
+.spotlight-header h1 {
+  flex-grow: 1;
+}
+
+.refresh-btn {
+  height: 2rem;
+}
+
+.refresh-icon {
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
+}
+
+.spotlight-content {
+  display: flex;
+  gap: 8px;
+}
+
+.spotlight-icon {
+  height: 2.8rem;
+}
+
+.name-link {
+  color: var(--colour--link)
+}
+
+.count-div {
+  font-weight: bolder;
+}
+
+.postcode-search-form {
+  align-items: center;
+  display: flex;
+  gap: 12px;
+}
+.postcode-search-input {
+  color: var(--colour--white);
+  background-color: var(--colour--input);
+  border: 2px solid var(--colour--input--border);
+  border-radius: 10px;
+  font-family: var(--font-family);
+  height: 3rem;
+}
+
+.suburb-results button {
+  margin: 4px;
+}
+
+.search-icon {
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
+}
+
+.map {
+  height: 100%;
+  width: 100%;
+}
+
 .marker {
   max-height: 3rem;
+}
+
+.about,
+.nearest {
+  height: 100%;
+}
+
+.station {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+}
+
+.nearest-icon-div,
+.nearest-text-div {
+  height: 100px;
 }
 
 .nearest-icon {
@@ -58,54 +184,9 @@
   margin-top: 20px;
 }
 
-.station {
-  display: grid;
-  grid-template-columns: 1fr 3fr;
-}
 
-.nearest-icon-div,
-.nearest-text-div {
-  height: 100px;
-  
-}
 
-.section-left > div {
-  border-bottom: 2px solid #363636;
-  margin-bottom: 20px;
-  padding-bottom: 20px
-}
 
-.name-link {
-  color: #B07FF5
-}
 
-button {
-  color: white;
-  background-color: #4D00BC;
-  border: 2px solid #6715DD;
-  padding: 10px;
-  border-radius: 10px;
-  font-family: Roboto Mono;
-  height: 3rem;
-  display: inline-block;
-}
 
-.search-icon {
-  height: 100%;
-  width: 100%;
-  object-fit: contain;
-}
 
-.postcode-search-input {
-  color: white;
-  background-color: #424242;
-  border: 2px solid #646464;
-  border-radius: 10px;
-  font-family: Roboto Mono;
-  height: 3rem;
-  display: inline-block;
-}
-
-/* .postcode-search-form {
-  align-items: center;
-} */

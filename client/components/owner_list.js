@@ -13,6 +13,7 @@ mapApi.fetchOwnerStats()
       let countDiv = document.createElement('div')
       nameDiv.textContent = ownerName
       countDiv.textContent = ownerCount
+      countDiv.className = 'count-div'
       ownerDiv.className = 'owner-div'
       ownerDiv.appendChild(nameDiv)
       ownerDiv.appendChild(countDiv)
