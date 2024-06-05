@@ -45,7 +45,7 @@ function findByBounds(object) {
     AND
     longitude 
     BETWEEN $3 AND $4
-    LIMIT 400
+    LIMIT 100
     ;
   `;
 
