@@ -1,4 +1,5 @@
 const todayDiv = document.querySelector(".today");
+const weatherTimeIcon = document.querySelector(".weather-time-icon");
 todayDiv.classList.add('time');
 
 let intervalId = null;
@@ -9,6 +10,12 @@ todayDiv.addEventListener('click', handleDisplayDateTempClick);
 function handleDisplayDateTempClick (event) {
   todayDiv.classList.toggle('time');
   todayDiv.classList.toggle('temperature');
+  if (weatherTimeIcon.src === "https://img.icons8.com/?size=100&id=10034&format=png&color=B07FF5" ) {
+    weatherTimeIcon.src = "https://img.icons8.com/?size=100&id=9247&format=png&color=B07FF5"
+  }
+else {
+  weatherTimeIcon.src = "https://img.icons8.com/?size=100&id=10034&format=png&color=B07FF5"
+}
   displayDateTemp();
 }
 
