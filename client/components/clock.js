@@ -14,6 +14,7 @@ function handleDisplayDateTempClick (event) {
 
 function displayDateTemp () {
   if (todayDiv.classList.contains('time')) {
+    updateClock();
     intervalId = setInterval(updateClock, 1000);
     function updateClock() {
       const date = new Date();
