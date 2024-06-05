@@ -21,3 +21,9 @@ export async function fetchRandomOwner() {
   let randomOwner = await res.json()
   return randomOwner
 }
+
+export async function fetchBounds(array) {
+  let res = await fetch(`/api/stations/bounds?NWLat=${array[0]}&NWLng=${array[1]}&SELat=${array[2]}&SELng=${array[3]}`)
+  let bounds = await res.json()
+  return bounds
+}
