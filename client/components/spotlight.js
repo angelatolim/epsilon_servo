@@ -1,4 +1,5 @@
 import * as MapApi from "../map_api.js";
+import { getMap } from "./map.js";
 
 const spotlightDiv = document.querySelector(".spotlight-content");
 const refreshBtn = document.querySelector(".refresh-btn");
@@ -17,14 +18,23 @@ async function renderSpotlight() {
 
   let data = await getRandom();
 
-  const nameDiv = document.createElement("div");
-  nameDiv.innerHTML = data.name;
-  nameDiv.classname = "name-div";
+  const nameLink = document.createElement("a");
+  nameLink.textContent = data.name;
+  nameLink.className = "name-link";
+  nameLink.addEventListener("click", handleLink);
+
+  function handleLink(event) {
+    const latLng = {
+      lat: data.latitude,
+      lng: data.longitude,
+    };
+    getMap().setCenter(latLng);
+  }
 
   const addressDiv = document.createElement("div");
   addressDiv.innerHTML = data.address;
   addressDiv.className = "address-div";
 
-  spotlightDiv.appendChild(nameDiv);
+  spotlightDiv.appendChild(nameLink);
   spotlightDiv.appendChild(addressDiv);
 }
