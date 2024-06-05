@@ -48,3 +48,22 @@ SELECT *
     AND longitude 
     BETWEEN  
     ;
+
+-- 
+CREATE EXTENSION cube;
+CREATE EXTENSION earthdistance;
+
+SELECT
+    *,
+    earth_distance(
+        ll_to_earth(latitude, longitude),
+        ll_to_earth($1, $2)
+    ) AS distance
+FROM stations
+WHERE
+    earth_distance(
+        ll_to_earth(latitude, longitude),
+        ll_to_earth($1, $2)
+    ) <= $3 * 1000
+ORDER BY distance
+LIMIT 7;

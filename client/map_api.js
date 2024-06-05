@@ -4,8 +4,8 @@ export async function fetchStations() {
   return stations;
 }
 
-export async function fetchTen() {
-  let res = await fetch("/api/stations");
+export async function fetchNearest(latitude, longitude, radius) {
+  let res = await fetch(`/api/stations/nearest?latitude=${latitude}&longitude=${longitude}&radius=${radius}`);
   let stations = await res.json();
   return stations;
 }

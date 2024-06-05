@@ -12,18 +12,6 @@ function findMany() {
   return db.query(sql).then((result) => result.rows);
 }
 
-function findTen() {
-  let sql = `
-        SELECT *
-        FROM stations
-        ORDER BY id
-        LIMIT 10
-        ;
-    `;
-
-  return db.query(sql).then((result) => result.rows);
-}
-
 function findRandom() {
   let sql = `
         SELECT * 
@@ -54,11 +42,33 @@ function findByBounds(object) {
     .then((result) => result.rows);
 }
 
+function findNearest (latitude, longitude, radius) {
+  let sql = `
+    SELECT
+    *,
+    earth_distance(
+        ll_to_earth(latitude, longitude),
+        ll_to_earth($1, $2)
+    ) AS distance
+    FROM stations
+    WHERE
+    earth_distance(
+        ll_to_earth(latitude, longitude),
+        ll_to_earth($1, $2)
+    ) <= $3 * 1000
+    ORDER BY distance
+    LIMIT 7;
+  `;
+  let sqlParams = [Number(latitude), Number(longitude), Number(radius)];
+  return db.query(sql, sqlParams)
+      .then(result => result.rows);
+}
+
 const Station = {
   findMany,
-  findTen,
   findRandom,
   findByBounds,
+  findNearest,
 };
 
 module.exports = Station;
