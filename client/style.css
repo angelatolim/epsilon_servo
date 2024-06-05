@@ -1,6 +1,6 @@
-* {
+/* * {
   border: red solid 1px;
-}
+} */
 
 .about,
 .nearest {
@@ -22,4 +22,8 @@
 .section-right {
   display: flex;
   flex-direction: column;
+}
+
+.marker {
+  max-height: 3rem;
 }
