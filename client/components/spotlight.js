@@ -5,6 +5,8 @@ import * as Utils from "../utils.js";
 const spotlightDiv = document.querySelector(".spotlight-content");
 const refreshBtn = document.querySelector(".refresh-btn");
 
+const stationList = document.querySelector(".station-list");
+
 renderSpotlight();
 
 refreshBtn.addEventListener("click", renderSpotlight);
@@ -121,6 +123,9 @@ async function renderSpotlight() {
       anchor: marker,
       map: getMap(),
     });
+
+    Utils.createCentreElem(getMap());
+    
   }
 
   const addressDiv = document.createElement("div");
