@@ -42,7 +42,7 @@ function findByBounds(object) {
     .then((result) => result.rows);
 }
 
-function findNearest (latitude, longitude, radius) {
+function findNearest(latitude, longitude, radius) {
   let sql = `
     SELECT
     *,
@@ -60,8 +60,7 @@ function findNearest (latitude, longitude, radius) {
     LIMIT 7;
   `;
   let sqlParams = [Number(latitude), Number(longitude), Number(radius)];
-  return db.query(sql, sqlParams)
-      .then(result => result.rows);
+  return db.query(sql, sqlParams).then((result) => result.rows);
 }
 
 const Station = {
