@@ -21,10 +21,7 @@ function handleSuccess(position) {
 }
 
 function handleError(err) {
-<<<<<<< Updated upstream
-=======
-  console.log();
->>>>>>> Stashed changes
+  console.log(err);
   const defaultPosition = { lat: -33.868, lng: 151.209 };
   loadMap(defaultPosition)
 }
