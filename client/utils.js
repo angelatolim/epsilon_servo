@@ -5,10 +5,10 @@ export function createStationElem(station) {
   let elem = document.createElement("div");
   elem.className = "station";
 
-  let textDiv = document.createElement("div")
-  textDiv.className = "nearest-text-div"
-  let iconDiv = document.createElement("div")
-  iconDiv.className = "icon-text-div"
+  let textDiv = document.createElement("div");
+  textDiv.className = "nearest-text-div";
+  let iconDiv = document.createElement("div");
+  iconDiv.className = "icon-text-div";
   let name = document.createElement("p");
   let address = document.createElement("p");
   let owner = document.createElement("img");
@@ -49,8 +49,8 @@ export function createStationElem(station) {
   iconDiv.appendChild(owner);
   textDiv.appendChild(name);
   textDiv.appendChild(address);
-  elem.appendChild(iconDiv)
-  elem.appendChild(textDiv)
+  elem.appendChild(iconDiv);
+  elem.appendChild(textDiv);
   elem.appendChild(distanceDiv);
   return elem;
 }
@@ -63,13 +63,13 @@ export async function createCentreElem(map) {
   let lng = document.createElement("p");
   let lookupButton = document.createElement("button");
   let centreAddressDiv = document.createElement("div");
-  
-  centreAddressDiv.className = 'centre-address-div';
+
+  centreAddressDiv.className = "centre-address-div";
   lat.textContent = `lat: ${currentCenter.lat()}`;
-  lat.className = 'map-centre-lat';
+  lat.className = "map-centre-lat";
   lng.textContent = `lng: ${currentCenter.lng()}`;
-  lng.className = 'map-centre-lng';
-  lookupButton.textContent = "lookup address";
+  lng.className = "map-centre-lng";
+  lookupButton.textContent = "Search Address";
   lookupButton.dataset.lat = currentCenter.lat();
   lookupButton.dataset.lng = currentCenter.lng();
 
@@ -90,7 +90,11 @@ export async function createCentreElem(map) {
   mapCenter.appendChild(lookupButton);
 }
 
-export async function createMarker (station, AdvancedMarkerElement, spotlight = null) {
+export async function createMarker(
+  station,
+  AdvancedMarkerElement,
+  spotlight = null
+) {
   const lat = Number(station.latitude);
   const lng = Number(station.longitude);
 

@@ -11,11 +11,11 @@
   --colour--divider: #363636;
   --colour--input: #424242;
   --colour--input--border: #646464;
-  --colour--primary: #4D00BC;
-  --colour--primary--border: #6715DD;
+  --colour--primary: #4d00bc;
+  --colour--primary--border: #6715dd;
   --colour--primary--hover: #280062;
-  --colour--primary--hover--border: #400A8D;
-  --colour--link: #B07FF5;
+  --colour--primary--hover--border: #400a8d;
+  --colour--link: #b07ff5;
 }
 
 h1 {
@@ -38,7 +38,8 @@ button:hover {
   border: 2px solid var(--colour--primary--hover--border);
 }
 
-button, button:hover {
+button,
+button:hover {
   transition: background-color 0.2s, border 0.2s;
 }
 
@@ -67,16 +68,19 @@ button, button:hover {
   color: var(--colour--white);
   display: flex;
   flex-direction: column;
+  /* transition: display 3s; */
 }
 
 .hidden {
   display: none;
+  /* transition: display 3s; */
 }
 
-.section-left > div {
+.section-left > div,
+.section-right > div {
   border-bottom: 2px solid var(--colour--divider);
   margin-bottom: 20px;
-  padding-bottom: 20px
+  padding-bottom: 20px;
 }
 
 .star {
@@ -99,6 +103,12 @@ button, button:hover {
   flex-grow: 1;
 }
 
+.stats-header h1,
+.postcode-header h1,
+.about-header h1 {
+  padding-bottom: 8px;
+}
+
 .refresh-btn {
   height: 2rem;
 }
@@ -119,7 +129,15 @@ button, button:hover {
 }
 
 .name-link {
-  color: var(--colour--link)
+  color: var(--colour--link);
+}
+
+.owner-list {
+  padding-bottom: 12px;
+}
+
+.owner-div {
+  padding-bottom: 12px;
 }
 
 .count-div {
@@ -141,13 +159,25 @@ button, button:hover {
 }
 
 .suburb-results button {
-  margin: 4px;
+  margin: 4px 4px 4px 0px;
+  height: 2rem;
 }
 
 .search-icon {
   height: 100%;
   width: 100%;
   object-fit: contain;
+}
+
+.about img {
+  height: 60px;
+  width: 60px;
+  border-radius: 200px;
+}
+
+.profiles {
+  display: flex;
+  gap: 8px;
 }
 
 .map {
@@ -169,6 +199,22 @@ button, button:hover {
   grid-template-columns: 1fr 3fr;
 }
 
+.clock-weather {
+  display: flex;
+  gap: 8px;
+  padding: 10px;
+}
+
+.today:hover {
+  cursor: pointer;
+  color: #b07ff5;
+}
+
+.weather-time-icon {
+  height: 24px;
+  width: 24px;
+}
+
 .nearest-icon-div,
 .nearest-text-div {
   height: 100px;
@@ -183,10 +229,3 @@ button, button:hover {
   align-items: center;
   margin-top: 20px;
 }
-
-
-
-
-
-
-
