@@ -3,9 +3,10 @@ import * as Utils from "../utils.js";
 import { getMap } from "./map.js";
 
 const stationList = document.querySelector(".station-list");
+const sectionMiddle = document.querySelector('.section-middle');
 
 document.addEventListener("mapInitialised", populateStationList);
-document.addEventListener("mouseup", (event) => {
+sectionMiddle.addEventListener("mouseup", (event) => {
   stationList.innerHTML = "";
   populateStationList();
 });

@@ -74,7 +74,7 @@ export async function createCentreElem(map) {
   lookupButton.dataset.lng = currentCenter.lng();
 
   lookupButton.addEventListener("click", handleGetAddress);
-
+  
   function handleGetAddress(event) {
     let centre = event.target;
 
