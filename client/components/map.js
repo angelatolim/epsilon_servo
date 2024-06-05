@@ -3,9 +3,11 @@ import * as MapApi from "../map_api.js";
 let map;
 
 async function initMap() {
-  const position = { lat: -33.868, lng: 151.209 };
+  const position = { lat: -36.118379, lng: 146.872897 };
   const { Map } = await google.maps.importLibrary("maps");
   const { AdvancedMarkerElement } = await google.maps.importLibrary("marker");
+
+
 
   map = new Map(document.getElementById("map"), {
     zoom: 13,
@@ -13,6 +15,7 @@ async function initMap() {
     center: position,
     mapId: "DEMO_MAP_ID",
   });
+
 
   MapApi.fetchStations().then((stations) => {
     stations.forEach((station) => {
@@ -23,11 +26,43 @@ async function initMap() {
         lat: lat,
         lng: lng,
       };
+
+
+      const markerImg = document.createElement("img");
+      markerImg.className = 'marker'
+
+      switch(station.owner) {
+        case 'Caltex':
+          markerImg.src = "../images/caltex.png";
+          break
+        case 'Shell':
+          markerImg.src = "../images/shell.png";
+          break
+        case '7-Eleven Pty Ltd':
+          markerImg.src = "../images/7-eleven.png";
+          break
+        case 'Ampol':
+          markerImg.src = "../images/ampol.png";
+          break
+        case 'BP':
+          markerImg.src = "../images/bp.png";
+          break
+        case 'United':
+          markerImg.src = "../images/united.png";
+          break
+        default:
+          markerImg.src = "../images/fuel.png";
+
+      }
+
       const marker = new AdvancedMarkerElement({
         map: map,
         position: position,
         title: station.name,
+        content: markerImg
       });
+
+
 
       const name = station.name;
       const address = station.address;
