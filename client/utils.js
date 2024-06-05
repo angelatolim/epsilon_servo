@@ -1,4 +1,5 @@
 import * as MapApi from "../map_api.js";
+import { getMap } from "./components/map.js";
 
 export function createStationElem(station) {
   let elem = document.createElement("div");
@@ -74,4 +75,70 @@ export async function createCentreElem(map) {
   mapCenter.appendChild(lng);
   mapCenter.appendChild(centreAddressDiv);
   mapCenter.appendChild(lookupButton);
+}
+
+export async function createMarker (station, AdvancedMarkerElement, spotlight = null) {
+  const lat = Number(station.latitude);
+  const lng = Number(station.longitude);
+
+  const position = {
+    lat: lat,
+    lng: lng,
+  };
+  const markerImg = document.createElement("img");
+  markerImg.className = "marker";
+
+  switch (station.owner) {
+    case "Caltex":
+      markerImg.src = "../images/caltex.png";
+      break;
+    case "Shell":
+      markerImg.src = "../images/shell.png";
+      break;
+    case "7-Eleven Pty Ltd":
+      markerImg.src = "../images/7-eleven.png";
+      break;
+    case "Ampol":
+      markerImg.src = "../images/ampol.png";
+      break;
+    case "BP":
+      markerImg.src = "../images/bp.png";
+      break;
+    case "United":
+      markerImg.src = "../images/united.png";
+      break;
+    default:
+      markerImg.src = "../images/fuel.png";
+  }
+
+  const marker = new AdvancedMarkerElement({
+    map: getMap(),
+    position: position,
+    title: station.name,
+    content: markerImg,
+  });
+
+  const name = station.name;
+  const address = station.address;
+  const owner = station.owner;
+
+  const contentString = `<div id="content">
+    <h1>${name}</h1>
+    <p>${address}</p>
+    <p>${owner}</p>
+    <p>${lat.toFixed(6)}</p>
+    <p>${lng.toFixed(6)}</p>
+    <button>Save</button>
+  </div>
+  `;
+  const infowindow = new google.maps.InfoWindow({
+    content: contentString,
+    // ariaLabel: "NAME"
+  });
+  marker.addListener("click", () => {
+    infowindow.open({
+      anchor: marker,
+      map,
+    });
+  });
 }
