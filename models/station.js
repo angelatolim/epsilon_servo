@@ -36,8 +36,7 @@ function findRandom() {
   return db.query(sql).then((result) => result.rows[0]);
 }
 
-function findByBounds(topLeft, bottomRight) {
-
+function findByBounds(object) {
   let sql = `
     SELECT * 
     FROM stations 
@@ -46,22 +45,20 @@ function findByBounds(topLeft, bottomRight) {
     AND
     longitude 
     BETWEEN $3 AND $4
+    LIMIT 1
     ;
-  `
-  console.log(topLeft.lat)
-  console.log(topLeft.long)
+  `;
 
-  return db.query(sql, [bottomRight.lat, topLeft.lat, topLeft.long, bottomRight.long]).then(result => result.rows)
-
+  return db
+    .query(sql, [object.NWLat, object.SELat, object.NWLng, object.SELng])
+    .then((result) => result.rows);
 }
 
 const Station = {
   findMany,
   findTen,
   findRandom,
-  findByBounds
+  findByBounds,
 };
 
 module.exports = Station;
-
-

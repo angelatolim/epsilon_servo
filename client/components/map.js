@@ -21,7 +21,6 @@ function handleSuccess(position) {
 }
 
 function handleError(err) {
-  console.log(err);
   const defaultPosition = { lat: -33.868, lng: 151.209 };
   loadMap(defaultPosition)
 }
@@ -110,6 +109,13 @@ async function loadMap(position) {
   const currentCenter = map.getCenter();
   const mapCenter = document.querySelector(".map-centre");
 
+  google.maps.event.addListener(map, 'bounds_changed', function() {
+    const boundsString = map.getBounds().toUrlValue()
+    const latLongArray = boundsString.split(',')
+    MapApi.fetchBounds(latLongArray)
+      .then(stations => console.log(stations))
+  })
+
   let lat = document.createElement("p");
   let lng = document.createElement("p");
 
@@ -121,3 +127,4 @@ async function loadMap(position) {
 }
 
 initMap();
+
