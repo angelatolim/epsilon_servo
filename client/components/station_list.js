@@ -5,7 +5,7 @@ import { getMap } from "./map.js";
 const stationList = document.querySelector(".station-list");
 
 document.addEventListener("mapInitialised", populateStationList);
-document.addEventListener('mouseup', (event) => {
+document.addEventListener("mouseup", (event) => {
   stationList.innerHTML = "";
   populateStationList();
 });

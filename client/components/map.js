@@ -53,6 +53,8 @@ async function loadMap(position) {
 
 initMap();
 
+
+
 export function getMap() {
   return map;
 }

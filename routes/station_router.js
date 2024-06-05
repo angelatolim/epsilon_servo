@@ -12,19 +12,15 @@ router.get("/api/stations/random", (req, res) => {
 });
 
 router.get("/api/stations/bounds", (req, res) => {
-  
-  let boundsObject = req.query
-
-  Station.findByBounds(boundsObject).then((data) =>
-    res.status(200).json(data)
-  )
+  let boundsObject = req.query;
+  Station.findByBounds(boundsObject).then((data) => res.status(200).json(data));
 });
 
 router.get("/api/stations/nearest", (req, res) => {
   let { latitude, longitude, radius } = req.query;
-  console.log(latitude, longitude, radius);
-  Station.findNearest(latitude, longitude, radius)
-    .then(data => res.status(200).json(data));
-})
+  Station.findNearest(latitude, longitude, radius).then((data) =>
+    res.status(200).json(data)
+  );
+});
 
 module.exports = router;

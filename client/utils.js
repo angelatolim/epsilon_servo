@@ -12,6 +12,11 @@ export function createStationElem(station) {
   let name = document.createElement("p");
   let address = document.createElement("p");
   let owner = document.createElement("img");
+  let distance = Math.round(Number(station.distance));
+  let distanceString = `${distance} m`;
+  let distanceDiv = document.createElement("div");
+  distanceDiv.textContent = distanceString;
+  distanceDiv.className = "nearest-distance-div";
 
   name.textContent = station.name;
   address.textContent = station.address;
@@ -46,6 +51,7 @@ export function createStationElem(station) {
   textDiv.appendChild(address);
   elem.appendChild(iconDiv)
   elem.appendChild(textDiv)
+  elem.appendChild(distanceDiv);
   return elem;
 }
 
@@ -57,9 +63,12 @@ export async function createCentreElem(map) {
   let lng = document.createElement("p");
   let lookupButton = document.createElement("button");
   let centreAddressDiv = document.createElement("div");
-
+  
+  centreAddressDiv.className = 'centre-address-div';
   lat.textContent = `lat: ${currentCenter.lat()}`;
+  lat.className = 'map-centre-lat';
   lng.textContent = `lng: ${currentCenter.lng()}`;
+  lng.className = 'map-centre-lng';
   lookupButton.textContent = "lookup address";
   lookupButton.dataset.lat = currentCenter.lat();
   lookupButton.dataset.lng = currentCenter.lng();
@@ -75,8 +84,8 @@ export async function createCentreElem(map) {
       }
     );
   }
-  mapCenter.appendChild(lat);
-  mapCenter.appendChild(lng);
+  centreAddressDiv.appendChild(lat);
+  centreAddressDiv.appendChild(lng);
   mapCenter.appendChild(centreAddressDiv);
   mapCenter.appendChild(lookupButton);
 }
