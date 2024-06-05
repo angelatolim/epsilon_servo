@@ -28,7 +28,14 @@ function displayDateTemp () {
       const string = date.toString().split(" ");
       const day = string[0];
       const time = string[4];
-      todayDiv.textContent = `${day} ${time}`;
+      let AMorPM
+      if (Number(time.substring(0,2)) >= 12){
+        AMorPM = 'PM'
+      } else {
+        AMorPM = 'AM'
+      }
+
+      todayDiv.textContent = `${day} ${time} ${AMorPM}`;
     }
   } else if (todayDiv.classList.contains('temperature')) {
     clearInterval(intervalId);
