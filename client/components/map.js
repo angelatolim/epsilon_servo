@@ -3,9 +3,6 @@ import * as MapApi from "../map_api.js";
 let map;
 
 async function initMap() {
-<<<<<<< Updated upstream
-  const position = { lat: -36.118379, lng: 146.872897 };
-=======
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(handleSuccess, handleError)
   } else {
@@ -24,17 +21,13 @@ function handleSuccess(position) {
 }
 
 function handleError(err) {
-  console.log();
   const defaultPosition = { lat: -33.868, lng: 151.209 };
   loadMap(defaultPosition)
 }
 
 async function loadMap(position) {
->>>>>>> Stashed changes
   const { Map } = await google.maps.importLibrary("maps");
   const { AdvancedMarkerElement } = await google.maps.importLibrary("marker");
-
-
 
   map = new Map(document.getElementById("map"), {
     zoom: 13,
@@ -42,11 +35,6 @@ async function loadMap(position) {
     center: position,
     mapId: "DEMO_MAP_ID",
   });
-<<<<<<< Updated upstream
-
-
-=======
->>>>>>> Stashed changes
   MapApi.fetchStations().then((stations) => {
     stations.forEach((station) => {
       const lat = Number(station.latitude);
@@ -91,13 +79,7 @@ async function loadMap(position) {
         title: station.name,
         content: markerImg
       });
-<<<<<<< Updated upstream
-
-
-
-=======
   
->>>>>>> Stashed changes
       const name = station.name;
       const address = station.address;
       const owner = station.owner;
