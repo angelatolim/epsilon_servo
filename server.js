@@ -6,7 +6,8 @@ const port = 8080;
 const db = require("./db");
 const stationRouter = require("./routes/station_router");
 const ownerRouter = require("./routes/owner_router");
-const postcodeRouter = require("./routes/postcode_router")
+const postcodeRouter = require("./routes/postcode_router");
+const centreRouter = require("./routes/centre_router");
 
 app.use(express.static("client"));
 
@@ -19,6 +20,7 @@ app.get("/", (req, res) => {
 app.use(stationRouter);
 app.use(ownerRouter);
 app.use(postcodeRouter);
+app.use(centreRouter);
 
 app.listen(port, () => {
   console.log(`server listening on port ${port}`);

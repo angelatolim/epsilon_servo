@@ -1,16 +1,11 @@
-import * as mapApi from '../map_api.js'
-import createStationElem from '../utils.js'
+import * as mapApi from "../map_api.js";
+import * as Utils from "../utils.js";
 
-// set elems to be used
-const stationList = document.querySelector('.station-list')
+const stationList = document.querySelector(".station-list");
 
-mapApi.fetchTen()
-  .then(stations => {
-    stations.forEach( station => {
-      let stationElem = createStationElem(station)
-      stationList.appendChild(stationElem)
-    })
-})
-
-
-// functions
+mapApi.fetchTen().then((stations) => {
+  stations.forEach((station) => {
+    let stationElem = Utils.createStationElem(station);
+    stationList.appendChild(stationElem);
+  });
+});
