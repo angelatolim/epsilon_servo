@@ -36,6 +36,8 @@ async function loadMap(position) {
     center: position,
     mapId: "DEMO_MAP_ID",
   });
+  const startEvent = new Event("mapInitialised");
+  document.dispatchEvent(startEvent);
 
   google.maps.event.addListener(map, "bounds_changed", function () {
     const boundsString = map.getBounds().toUrlValue();
