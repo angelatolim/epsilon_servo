@@ -40,3 +40,10 @@ export async function saveStation(id) {
   return saved
 }
 
+
+export async function fetchFavourites() {
+  let res = await fetch(`/api/stations/saved`)
+  let saved = await res.json()
+  return saved
+}
+
