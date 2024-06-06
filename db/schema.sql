@@ -67,3 +67,9 @@ WHERE
     ) <= $3 * 1000
 ORDER BY distance
 LIMIT 7;
+
+ALTER TABLE stations
+ADD is_saved BOOLEAN;
+
+UPDATE stations
+SET is_saved = FALSE;
