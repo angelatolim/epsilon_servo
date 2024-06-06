@@ -12,10 +12,6 @@ export function createStationElem(station) {
     lng: station.longitude,
   };
 
-  elem.addEventListener('click', (event) => {
-    getMap().setCenter(latLng);
-  })
-
   let textDiv = document.createElement("div");
   textDiv.className = "nearest-text-div";
   let iconDiv = document.createElement("div");
@@ -34,6 +30,10 @@ export function createStationElem(station) {
   address.textContent = station.address;
 
   owner.className = "nearest-icon";
+
+  name.addEventListener('click', (event) => {
+    getMap().setCenter(latLng);
+  })
 
   switch (station.owner) {
     case "Caltex":

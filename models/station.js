@@ -57,7 +57,7 @@ function findNearest(latitude, longitude, radius) {
         ll_to_earth($1, $2)
     ) <= $3 * 1000
     ORDER BY distance
-    LIMIT 7;
+    LIMIT 10;
   `;
   let sqlParams = [Number(latitude), Number(longitude), Number(radius)];
   return db.query(sql, sqlParams).then((result) => result.rows);
