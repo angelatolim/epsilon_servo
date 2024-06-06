@@ -1,5 +1,6 @@
 import * as MapApi from "../map_api.js";
 import { getMap } from "./components/map.js";
+import updateFavouritesCount from "./components/favourites.js"
 
 export function createStationElem(station) {
   let elem = document.createElement("div");
@@ -177,13 +178,11 @@ export async function createMarker(
 
     saveBtns.forEach(saveBtn => 
       saveBtn.addEventListener('click', (event) => {
-        console.log('clicked')
-        console.log(saveBtn)
-        console.log(saveBtn.dataset.id)
+    
         let id = Number(saveBtn.dataset.id)
         MapApi.saveStation(id)
         .then(result => console.log(result))
-
+        updateFavouritesCount()
         // console.log(dataset.id)
   
       })
