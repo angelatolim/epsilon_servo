@@ -19,10 +19,14 @@ Epsilon Servo is a user-friendly web application that empowers users to find the
 
 
 ## Challenges and Takeaways 🤔
-
+- Coordinating tasks while using Git in a team-based project.
+- Navigating the Google Maps API documentation. 
+- Refactoring code to improve workflow and semantic separation of files. 
 
 ## Next Steps 🚀
-
+- Change the clock to use World Time API
+- Improve markers performance by only removing markers when they become out of bounds, and only redraw new markers.
+- Allow user to toggle between meters or kilometers. 
 
 ## Team name 👥
 Epsilon V
