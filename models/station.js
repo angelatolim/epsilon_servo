@@ -81,13 +81,26 @@ function saveStation(id) {
   return db.query(sql, [id]).then(result => result.rows[0])
 }
 
+function unsaveStation(id) {
+  
+  let sql = `
+  UPDATE stations
+  SET is_saved = FALSE
+  WHERE id = $1
+  RETURNING *
+  `
+  return db.query(sql, [id]).then(result => result.rows[0])
+}
+
+
 const Station = {
   findMany,
   findRandom,
   findByBounds,
   findNearest,
   saveStation,
-  getFavourites
+  getFavourites,
+  unsaveStation
 };
 
 module.exports = Station;

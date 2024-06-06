@@ -151,6 +151,14 @@ export async function createMarker(
   const name = station.name;
   const address = station.address;
   const owner = station.owner;
+  
+  let saveTextContent
+
+  if (!station.is_saved) {
+    saveTextContent = 'SAVE'
+  } else {
+    saveTextContent = 'UNSAVE'
+  }
 
   const contentString = `<div id="content">
     <h1>${name}</h1>
@@ -158,7 +166,7 @@ export async function createMarker(
     <p>${owner}</p>
     <p>${lat.toFixed(6)}</p>
     <p>${lng.toFixed(6)}</p>
-    <button class="save-btn" data-id=${station.id}>Save</button>
+    <button class="save-btn" data-id=${station.id} data-is_saved=${station.is_saved}>${saveTextContent}</button>
   </div>
   `;
   const infowindow = new google.maps.InfoWindow({
@@ -176,16 +184,45 @@ export async function createMarker(
     
     const saveBtns = document.querySelectorAll('.save-btn')
 
-    saveBtns.forEach(saveBtn => 
-      saveBtn.addEventListener('click', (event) => {
-    
+    saveBtns.forEach(saveBtn => {
+
+      if (saveBtn.dataset.is_saved === 'false') {
+        saveBtn.addEventListener('click', saveCurrentStation)
+      } else {
+        saveBtn.addEventListener('click', unsaveCurrentStation)
+      }
+
+      
+
+      function saveCurrentStation(event) {
+
         let id = Number(saveBtn.dataset.id)
         MapApi.saveStation(id)
         .then(result => console.log(result))
         updateFavouritesCount()
-        // console.log(dataset.id)
-  
-      })
+        saveBtn.removeEventListener('click', saveCurrentStation)
+        saveBtn.addEventListener('click', unsaveCurrentStation)
+        saveBtn.innerHTML = 'UNSAVE'
+        
+      }
+      function unsaveCurrentStation(event) {
+
+        let id = Number(saveBtn.dataset.id)
+        MapApi.unsaveStation(id)
+        .then(result => console.log(result))
+        updateFavouritesCount()
+        saveBtn.removeEventListener('click', unsaveCurrentStation)
+        saveBtn.addEventListener('click', saveCurrentStation)
+        saveBtn.innerHTML = 'SAVE'
+        
+      }
+
+
+    }
+
+      
+
+
   )})
 
 }

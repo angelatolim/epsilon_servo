@@ -40,6 +40,12 @@ export async function saveStation(id) {
   return saved
 }
 
+export async function unsaveStation(id) {
+  let res = await fetch(`/api/stations/${id}/unsave`, {method: "PUT"})
+  let unsaved = await res.json()
+  return unsaved
+}
+
 
 export async function fetchFavourites() {
   let res = await fetch(`/api/stations/saved`)
