@@ -33,3 +33,10 @@ export async function fetchAddress(lat, lng) {
   let address = await res.json();
   return address;
 }
+
+export async function saveStation(id) {
+  let res = await fetch(`/api/stations/${id}/save`, {method: "PUT"})
+  let saved = await res.json()
+  return saved
+}
+

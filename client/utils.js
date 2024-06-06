@@ -156,7 +156,7 @@ export async function createMarker(
     <p>${owner}</p>
     <p>${lat.toFixed(6)}</p>
     <p>${lng.toFixed(6)}</p>
-    <button>Save</button>
+    <button class="save-btn" data-id=${station.id}>Save</button>
   </div>
   `;
   const infowindow = new google.maps.InfoWindow({
@@ -169,6 +169,25 @@ export async function createMarker(
       map,
     });
   });
+  
+  google.maps.event.addListener(infowindow, 'domready', function() {
+    
+    const saveBtns = document.querySelectorAll('.save-btn')
+
+    saveBtns.forEach(saveBtn => 
+      saveBtn.addEventListener('click', (event) => {
+        console.log('clicked')
+        console.log(saveBtn)
+        console.log(saveBtn.dataset.id)
+        let id = Number(saveBtn.dataset.id)
+        MapApi.saveStation(id)
+        .then(result => console.log(result))
+
+        // console.log(dataset.id)
+  
+      })
+  )})
+
 }
 
 export async function populateStationList(event) {

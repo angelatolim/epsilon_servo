@@ -63,11 +63,23 @@ function findNearest(latitude, longitude, radius) {
   return db.query(sql, sqlParams).then((result) => result.rows);
 }
 
+function saveStation(id) {
+  
+  let sql = `
+  UPDATE stations
+  SET is_saved = TRUE
+  WHERE id = $1
+  RETURNING *
+  `
+  return db.query(sql, [id]).then(result => result.rows[0])
+}
+
 const Station = {
   findMany,
   findRandom,
   findByBounds,
   findNearest,
+  saveStation
 };
 
 module.exports = Station;

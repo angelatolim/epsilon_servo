@@ -23,4 +23,10 @@ router.get("/api/stations/nearest", (req, res) => {
   );
 });
 
+router.put('/api/stations/:id/save', (req, res) => {
+  let id = req.params.id
+
+  Station.saveStation(id).then(data => res.status(200).json(data))
+})
+
 module.exports = router;
