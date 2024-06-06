@@ -14,11 +14,5 @@ document.addEventListener("mapInitialised", () => {
     stationList.innerHTML = "";
     Utils.populateStationList();
   });
-
-  nameLink.addEventListener("click", (event) => {
-    stationList.innerHTML = "";
-    Utils.populateStationList();
-  });
-  
 })
 
