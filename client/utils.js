@@ -4,6 +4,17 @@ import { getMap } from "./components/map.js";
 export function createStationElem(station) {
   let elem = document.createElement("div");
   elem.className = "station";
+  elem.dataset.lat = station.latitude;
+  elem.dataset.lng = station.longitude;
+
+  const latLng = {
+    lat: station.latitude,
+    lng: station.longitude,
+  };
+
+  elem.addEventListener('click', (event) => {
+    getMap().setCenter(latLng);
+  })
 
   let textDiv = document.createElement("div");
   textDiv.className = "nearest-text-div";
