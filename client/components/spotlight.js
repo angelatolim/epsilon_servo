@@ -5,7 +5,6 @@ import * as Utils from "../utils.js";
 const spotlightDiv = document.querySelector(".spotlight-content");
 const refreshBtn = document.querySelector(".refresh-btn");
 
-const stationList = document.querySelector(".station-list");
 
 renderSpotlight();
 
@@ -125,7 +124,6 @@ async function renderSpotlight() {
     });
 
     Utils.createCentreElem(getMap());
-    
   }
 
   const addressDiv = document.createElement("div");
@@ -139,4 +137,10 @@ async function renderSpotlight() {
   spotlightText.appendChild(addressDiv);
   spotlightDiv.appendChild(iconDiv)
   spotlightDiv.appendChild(spotlightText)
+
+  const stationList = document.querySelector(".station-list");
+  nameLink.addEventListener("click", (event) => {
+    stationList.innerHTML = "";
+    Utils.populateStationList();
+  });
 }

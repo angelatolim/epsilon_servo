@@ -58,7 +58,7 @@ export function createStationElem(station) {
 export async function createCentreElem(map) {
   const currentCenter = map.getCenter();
   const mapCenter = document.querySelector(".map-centre");
-
+  mapCenter.innerHTML = "";
   let lat = document.createElement("p");
   let lng = document.createElement("p");
   let lookupButton = document.createElement("button");
@@ -156,6 +156,21 @@ export async function createMarker(
     infowindow.open({
       anchor: marker,
       map,
+    });
+  });
+}
+
+export async function populateStationList(event) {
+  const currentCenter = getMap().getCenter();
+  const latitude = currentCenter.lat();
+  const longitude = currentCenter.lng();
+  const radius = 100000;
+  const stationList = document.querySelector(".station-list");
+
+  MapApi.fetchNearest(latitude, longitude, radius).then((stations) => {
+    stations.forEach((station) => {
+      let stationElem = createStationElem(station);
+      stationList.appendChild(stationElem);
     });
   });
 }

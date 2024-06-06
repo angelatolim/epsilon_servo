@@ -1,26 +1,24 @@
-import * as mapApi from "../map_api.js";
+import * as MapApi from "../map_api.js";
 import * as Utils from "../utils.js";
 import { getMap } from "./map.js";
 
-const stationList = document.querySelector(".station-list");
-const sectionMiddle = document.querySelector('.section-middle');
+document.addEventListener("mapInitialised", () => {
+  const stationList = document.querySelector(".station-list");
+  const sectionMiddle = document.querySelector('.section-middle');
+  const spotlightDiv = document.querySelector(".spotlight");
+  const nameLink = document.querySelector(".name-link");
 
-document.addEventListener("mapInitialised", populateStationList);
-sectionMiddle.addEventListener("mouseup", (event) => {
-  stationList.innerHTML = "";
-  populateStationList();
-});
-
-async function populateStationList(event) {
-  const currentCenter = getMap().getCenter();
-  const latitude = currentCenter.lat();
-  const longitude = currentCenter.lng();
-  const radius = 100000;
-
-  mapApi.fetchNearest(latitude, longitude, radius).then((stations) => {
-    stations.forEach((station) => {
-      let stationElem = Utils.createStationElem(station);
-      stationList.appendChild(stationElem);
-    });
+  Utils.populateStationList();
+  
+  sectionMiddle.addEventListener("click", (event) => {
+    stationList.innerHTML = "";
+    Utils.populateStationList();
   });
-}
+
+  nameLink.addEventListener("click", (event) => {
+    stationList.innerHTML = "";
+    Utils.populateStationList();
+  });
+  
+})
+
