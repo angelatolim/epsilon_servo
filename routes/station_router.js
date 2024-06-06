@@ -29,6 +29,12 @@ router.put('/api/stations/:id/save', (req, res) => {
   Station.saveStation(id).then(data => res.status(200).json(data))
 })
 
+router.put('/api/stations/:id/unsave', (req, res) => {
+  let id = req.params.id
+
+  Station.unsaveStation(id).then(data => res.status(200).json(data))
+})
+
 router.get("/api/stations/saved", (req, res) => {
   Station.getFavourites().then(data => res.status(200).json(data))
 })
