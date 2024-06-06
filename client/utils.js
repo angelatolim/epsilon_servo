@@ -21,6 +21,7 @@ export function createStationElem(station) {
   let iconDiv = document.createElement("div");
   iconDiv.className = "icon-text-div";
   let name = document.createElement("p");
+  name.className = 'name-nearest'
   let address = document.createElement("p");
   let owner = document.createElement("img");
   let distance = Math.round(Number(station.distance));
