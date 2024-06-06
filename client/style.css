@@ -52,7 +52,7 @@ button:hover {
 .page-wrapper {
   display: grid;
   grid-template-columns: 2fr 5fr 2fr;
-  height: 100vh;
+  height: 100%;
   font-family: var(--font-family);
   text-transform: uppercase;
 }
@@ -64,7 +64,7 @@ button:hover {
 
 .section-middle {
   width: 100%;
-  height: 100vh;
+  height: 100%;
 }
 
 .section-left,

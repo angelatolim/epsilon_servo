@@ -34,8 +34,9 @@ async function loadMap(position) {
     zoom: 13,
     minZoom: 8,
     center: position,
-    mapId: "DEMO_MAP_ID",
+    mapId: "64b0aaf3bcfcb169",
   });
+  
   const startEvent = new Event("mapInitialised");
   document.dispatchEvent(startEvent);
 
