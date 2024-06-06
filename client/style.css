@@ -91,6 +91,7 @@ button:hover {
 
 .title {
   display: flex;
+  gap: 8px;
 }
 
 .title img {
