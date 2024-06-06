@@ -89,6 +89,14 @@ button:hover {
   padding-bottom: 20px;
 }
 
+.title {
+  display: flex;
+}
+
+.title img {
+  height: 40px;
+}
+
 .star {
   display: flex;
   align-items: center;
